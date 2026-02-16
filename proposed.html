@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ARU — Incorporating AI Agents into Scrum (Before vs After)</title>
+  <style>
+    :root{
+      --text:#111;
+      --muted:#444;
+      --border:#e6e6e6;
+    }
+    body{
+      margin:0;
+      padding:28px;
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--text);
+      line-height:1.45;
+      background:#fff;
+    }
+    h1{ font-size: 24px; margin:0 0 14px; }
+    h2{ font-size: 18px; margin:0 0 10px; }
+    p{ margin:0 0 14px; color:var(--muted); max-width: 1100px; }
+    .grid{
+      display:flex;
+      gap:24px;
+      align-items:flex-start;
+      margin-top: 14px;
+    }
+    .col{
+      flex:1;
+      min-width: 320px;
+      border:1px solid var(--border);
+      border-radius:10px;
+      padding:16px 16px 10px;
+    }
+    .mermaid{
+      font-size: 14px; /* Mermaid uses this as a hint; we also set themeVariables in each diagram */
+    }
+    ul{ margin: 8px 0 0 18px; }
+    li{ margin: 6px 0; }
+    .section{
+      margin-top: 18px;
+      max-width: 1100px;
+    }
+    /* Responsive: stack columns on narrow screens */
+    @media (max-width: 920px){
+      .grid{ flex-direction: column; }
+    }
+  </style>
+</head>
+
+<body>
+  <h1>ARU — Incorporating AI Agents into Scrum (Before vs After)</h1>
+
+  <p>
+    ARU houses deterministic code for claim adjudication. Currently, business analysts expand manual auditor instructions
+    using SOPs, references, and data sheets into detailed processing steps and flow diagrams with help from junior staff
+    and systems analysts before handing them to developers. In the new process, AI agents generate the first complete
+    artifact set (elaborated instructions, system considerations, and flow diagrams) directly from analyst inputs, and a
+    BPM workflow manages validation, regeneration, and analyst–developer collaboration within the sprint lifecycle.
+  </p>
+
+  <div class="grid">
+    <div class="col">
+      <h2>Before (Manual Process)</h2>
+      <div class="mermaid">
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "fontFamily": "Arial, Helvetica, sans-serif",
+    "fontSize": "14px",
+    "primaryColor": "#E3F2FD",
+    "primaryBorderColor": "#1E88E5",
+    "lineColor": "#555",
+    "textColor": "#222"
+  }
+}}%%
+flowchart TD
+  A([BA captures auditor processing instructions])
+  B([Collect SOPs / references / data sheets])
+  C([Manually expand into detailed processing steps])
+  D([Add system considerations and analogies])
+  E([Junior staff create examples and flowcharts])
+  F([Systems Analyst verification])
+  G([Developer implements deterministic logic in ARU])
+  H([Validation during sprint])
+  A --> B --> C --> D --> E --> F --> G --> H
+      </div>
+    </div>
+
+    <div class="col">
+      <h2>After (AI-Enabled Process)</h2>
+      <div class="mermaid">
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "fontFamily": "Arial, Helvetica, sans-serif",
+    "fontSize": "14px",
+    "primaryColor": "#E8F5E9",
+    "primaryBorderColor": "#2E7D32",
+    "lineColor": "#555",
+    "textColor": "#222"
+  }
+}}%%
+flowchart TD
+  A([Analyst captures instructions + reference locations])
+  B([AI Agent generates detailed instructions + examples + flow diagrams])
+  C([BPM workflow: Analyst review and refinement])
+  D([Systems Analyst validation])
+  E([Backlog-ready artifacts - Definition of Ready met])
+  F([Developer uses artifacts + coding agents to implement deterministic logic in ARU])
+  G([BPM workflow: Developer ↔ Analyst clarification loop])
+  H([QA/UAT and sprint acceptance])
+  A --> B --> C
+  C -->|Regenerate if needed| B
+  C --> D --> E --> F
+  F --> G
+  G -->|Artifact updates if required| B
+  F --> H
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>AI Integration into Scrum</h2>
+    <ul>
+      <li><strong>Backlog Refinement / Definition of Ready:</strong> Analyst provides instructions and reference sources → AI generates complete processing artifacts → Analyst and Systems Analyst validate → story becomes ready for sprint.</li>
+      <li><strong>Sprint Execution:</strong> Developers implement deterministic code using validated artifacts and coding agents, with BPM-managed collaboration loops for clarifications.</li>
+      <li><strong>Sprint Review &amp; Acceptance:</strong> Functionality is verified against the AI-generated, analyst-approved processing instructions and diagrams.</li>
+    </ul>
+
+    <p style="margin-top:12px;">
+      This approach reduces manual artifact creation effort, accelerates readiness of user stories, and embeds AI agents directly into the Scrum delivery lifecycle while maintaining deterministic implementation control within ARU.
+    </p>
+  </div>
+
+  <!-- Mermaid -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      securityLevel: "strict"
+    });
+  </script>
+</body>
+</html>
